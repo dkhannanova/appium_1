@@ -1,0 +1,29 @@
+apply plugin: 'java'
+//apply plugin: 'application'
+
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    agent
+}
+dependencies {
+    implementation 'org.testng:testng:6.14.3'
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    implementation 'org.seleniumhq.selenium:selenium:2.0rc2'
+    implementation 'io.appium:java-client:7.0.0'
+    implementation 'org.hamcrest:hamcrest:2.1'
+    implementation 'org.hamcrest:hamcrest-library:2.1'
+    implementation 'org.hamcrest:hamcrest-core:2.1'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+    
+
+    }
+
+
+test{
+    useTestNG()
+}
+
