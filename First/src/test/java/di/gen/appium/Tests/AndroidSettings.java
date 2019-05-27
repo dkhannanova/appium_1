@@ -42,7 +42,14 @@ public class AndroidSettings {
 
         driver.findElementByXPath("//android.widget.LinearLayout[6]//android.widget.LinearLayout").click();
        // items2.get(6).click();
-      //  Assert.assertEquals(driver.findElementById("android:id/switch_widget").getAttribute("checked"),true);
+        if(driver.findElementById("android:id/switch_widget").getAttribute("checked").equals("false"))
+        {driver.findElementById("android:id/switch_widget").click();
+      Assert.assertEquals((driver.findElementById("android:id/switch_widget").getAttribute("checked")),"true");}
+        else{
+            driver.findElementById("android:id/switch_widget").click();
+            Assert.assertEquals((driver.findElementById("android:id/switch_widget").getAttribute("checked")),"false");
+
+        }
 
 
 
