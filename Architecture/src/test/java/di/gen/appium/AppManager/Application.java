@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -62,8 +63,16 @@ public class Application {
     }
 
     public void goToDragDrop(){
-        driver.findElementByXPath("//android.widget.TextView[@text='Views']").click();
+        goToViews();
         driver.findElementByXPath("//android.widget.TextView[@text='Drag and Drop']").click();
+    }
+
+    public void goToViews(){
+        driver.findElementByXPath("//android.widget.TextView[@text='Views']").click();
+    }
+
+    public void swipe(){
+    driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Spinner\"));");
     }
 
 
@@ -96,6 +105,19 @@ public class Application {
 
     public void stop() {
         driver.quit();
+
+    }
+
+    public void select(){
+        //Locate all drop down list elements
+
+        List<MobileElement> dropdownlist = driver.findElementsById("android:id/text1");
+        //Extract text from each element of drop down list one by one
+        for(MobileElement list: dropdownlist){
+            if (list.getText().equals("Children")){
+                list.click();
+            }
+        }
 
     }
 }
