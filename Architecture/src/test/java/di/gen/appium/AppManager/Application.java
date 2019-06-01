@@ -6,13 +6,11 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.remote.MobileCapabilityType;
-import net.sourceforge.htmlunit.corejs.javascript.tools.shell.Global;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -71,8 +69,8 @@ public class Application {
         driver.findElementByXPath("//android.widget.TextView[@text='Views']").click();
     }
 
-    public void swipe(){
-    driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Spinner\"));");
+    public void scroll(final String scrollTotext){
+    driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + scrollTotext + "\"));");
     }
 
 
@@ -81,6 +79,11 @@ public class Application {
         MobileElement element = (MobileElement) driver.findElement(locator);
         return element;
     }
+
+    public void clickByLocator (By locator){
+        //создаем элементы, первый - который тащим, второй - куда тащим
+        driver.findElement(locator).click();
+            }
 
     public void dragAndDrop(String element1,String element2){
         MobileElement dragdot1 = createElement(By.xpath(element1));
@@ -108,13 +111,13 @@ public class Application {
 
     }
 
-    public void select(){
+    public void select(String listValue){
         //Locate all drop down list elements
 
         List<MobileElement> dropdownlist = driver.findElementsById("android:id/text1");
         //Extract text from each element of drop down list one by one
         for(MobileElement list: dropdownlist){
-            if (list.getText().equals("Children")){
+            if (list.getText().equals(listValue)){
                 list.click();
             }
         }
