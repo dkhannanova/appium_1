@@ -114,6 +114,17 @@ public class Application {
         }
 
     }
+
+    public void fill (By locator, String text){
+        //создаем элементы, первый - который тащим, второй - куда тащим
+        driver.findElement(locator).sendKeys(text);
+    }
+
+    public void enter(){
+        driver.pressKeyCode(AndroidKeyCode.ENTER);
+        driver.findElementByXPath("//www");
+    }
+
     public NavigationManager getNavigationHelper() {
         return navigationHelper;
     }
