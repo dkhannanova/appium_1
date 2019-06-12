@@ -12,9 +12,10 @@ public class SimilarApps extends TestBase {
 
     @Test
     public static void similarApps(){
-         app.fill(By.xpath("//android.widget.ImageView[@resource-id='com.android.vending:id/search_box_idle_text']"),"Whatsapp");
-         app.enter();
-
+        app.clickByLocator(By.id("com.android.vending:id/search_box_idle_text"));
+        app.fill(By.xpath("//android.widget.FrameLayout[@resource-id='com.android.vending:id/text_container']"),"whatsapp");
+        app.enter();
+        app.clickByLocator(By.xpath("//android.widget.Button[@text='MORE INFO']"));
 
     }
 

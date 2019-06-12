@@ -10,8 +10,5 @@ public class SessionHelper {
         this.driver = driver;
     }
 
-    public void login(){
-
-    }
 
 }

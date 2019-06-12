@@ -40,7 +40,9 @@ public class Application {
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
         mobileSession(setCababilies(properties.getProperty("app"),properties.getProperty("device"), properties.getProperty("appActivity")));
         navigationHelper = new NavigationManager(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             }
+
 
     public static DesiredCapabilities setCababilies(String appPath, String devicename, String appActivity) {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -116,13 +118,11 @@ public class Application {
     }
 
     public void fill (By locator, String text){
-        //создаем элементы, первый - который тащим, второй - куда тащим
         driver.findElement(locator).sendKeys(text);
     }
 
     public void enter(){
         driver.pressKeyCode(AndroidKeyCode.ENTER);
-        driver.findElementByXPath("//www");
     }
 
     public NavigationManager getNavigationHelper() {
