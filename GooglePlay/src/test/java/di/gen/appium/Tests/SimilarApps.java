@@ -3,6 +3,7 @@ package di.gen.appium.Tests;
 
 import di.gen.appium.TestBase;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.appium.java_client.touch.offset.PointOption.point;
@@ -16,6 +17,9 @@ public class SimilarApps extends TestBase {
         app.fill(By.xpath("//android.widget.FrameLayout[@resource-id='com.android.vending:id/text_container']"),"whatsapp");
         app.enter();
         app.clickByLocator(By.xpath("//android.widget.Button[@text='MORE INFO']"));
+        app.scrollToText("Similar apps");
+        Assert.assertTrue(app.isElementPresent());
+
 
     }
 

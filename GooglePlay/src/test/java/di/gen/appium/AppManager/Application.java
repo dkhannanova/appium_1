@@ -129,7 +129,21 @@ public class Application {
         return navigationHelper;
     }
 
-    public static void setNavigationHelper(NavigationManager navigationHelper) {
-        Application.navigationHelper = navigationHelper;
+    public void scrollToText(final String scrolltext){
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + scrolltext + "\"));").click();
     }
+
+    public boolean isElementPresent(){
+        boolean present = false;
+        List<AndroidElement> apps = driver.findElementsByXPath("//android.support.v7.widget.RecyclerView");
+        for(MobileElement element:apps){
+            if(element.getAttribute("contentDescription").startsWith("App: Skype")){
+                present = true;
+            }
+        }
+        return present;
+    }
+
+
+
 }
